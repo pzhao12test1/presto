@@ -31,17 +31,17 @@ cache:
   directories:
   - $HOME/.m2/repository
 deploy:
-  acl: public_read
   true:
     all_branches: true
     condition: -v DEPLOY_S3_ACCESS_KEY && -v MAVEN_CHECKS
-  access_key_id: ${DEPLOY_S3_ACCESS_KEY}
-  provider: s3
-  bucket: ${DEPLOY_S3_BUCKET}
   skip_cleanup: true
-  secret_access_key: ${DEPLOY_S3_SECRET_KEY}
   upload-dir: ${ARTIFACTS_UPLOAD_PATH}
+  bucket: ${DEPLOY_S3_BUCKET}
+  provider: s3
   local-dir: /tmp/artifacts
+  access_key_id: ${DEPLOY_S3_ACCESS_KEY}
+  secret_access_key: ${DEPLOY_S3_SECRET_KEY}
+  acl: public_read
 dist: trusty
 env:
   global:
